@@ -5,6 +5,8 @@ const lightningPoller = async (): Promise<GeoJSON> => {
     const call = await axios.get('https://wwlln.net/USGS/Global/')
     const data = await call.data;
 
+    const timestamp = data.split('\n').find((i: string) => i.includes('Start:')).split('<br />')[0];
+
     const tableRow = data.split('</tr>')
 
     const features = tableRow.map((row:string) => {
@@ -46,7 +48,8 @@ const lightningPoller = async (): Promise<GeoJSON> => {
     }).filter(Boolean).flat();
     return {
         type: 'FeatureCollection',
-        features
+        features,
+        timestamp: new Date(timestamp).toISOString()
     }
 }
 

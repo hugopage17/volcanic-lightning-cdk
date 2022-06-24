@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start:local": "sam local start-api -p 5000 -t ./cdk.out/CdkStack.template.json",
     "deploy": "cdk deploy --profile personal",
     "synth": "cdk synth --profile personal",
@@ -34,7 +34,7 @@
     "@aws-cdk/aws-lambda": "1.106.1",
     "@aws-cdk/aws-lambda-nodejs": "1.106.1",
     "@aws-cdk/core": "1.106.1",
-    "@global-volcanic-lightning/types": "^1.0.1",
+    "@global-volcanic-lightning/types": "^1.0.3",
     "@types/jest": "^28.1.2",
     "@types/jsdom": "^16.2.14",
     "aws-lambda": "^1.0.7",
