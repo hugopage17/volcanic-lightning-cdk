@@ -1,7 +1,7 @@
 name: Unit testing
 on: [push]
 jobs:
-  run-in-container:
+  run-unit-test:
     runs-on: ubuntu-latest
     container: node:14-alpine
     steps:
