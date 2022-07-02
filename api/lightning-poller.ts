@@ -9,7 +9,7 @@ const lightningPoller = async (): Promise<GeoJSON> => {
 
     const tableRow = data.split('</tr>')
 
-    const features = tableRow.map((row:string) => {
+    const features = tableRow.map((row: string) => {
         const columns = row.split('\n')
         const header = columns.find((i) => i.includes('<tr')) as string
         if (header) {
@@ -25,7 +25,7 @@ const lightningPoller = async (): Promise<GeoJSON> => {
             if (alertRow) {
                 properties.forEach((tag, index) => {
                     const entry = tag.replace('<td>', '').replace('</td>', '');
-                   obj['properties']['severity'] = header.includes('alert') ? 'error' : 'warning';
+                    obj['properties']['severity'] = header.includes('alert') ? 'error' : 'warning';
                     if (index === 1) {
                         obj['properties']['name'] = entry
                     } else if (index === 2) {
@@ -44,7 +44,7 @@ const lightningPoller = async (): Promise<GeoJSON> => {
                 })
                 return obj
             }
-        }  
+        }
     }).filter(Boolean).flat();
     return {
         type: 'FeatureCollection',
