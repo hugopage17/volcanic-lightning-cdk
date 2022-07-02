@@ -1,8 +1,9 @@
 name: Unit testing
 on: [push]
 jobs:
-  build:
+  run-in-container:
     runs-on: ubuntu-latest
+    container: node:14-alpine
     steps:
       - name: Check out code
         uses: actions/checkout@v2
